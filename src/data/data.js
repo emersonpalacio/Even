@@ -19,7 +19,7 @@ export default [
     stargazerCpuent: 11111,
     ratingAverage: 0,
     reviewCouent: 0,
-    ownerAavatar: "hhttps://i.ibb.co/ZGVNtGm/Linda.jpg",
+    ownerAavatar: "https://i.ibb.co/x6HF241/Linda1.jpg",
   },
   {
     id: "3",

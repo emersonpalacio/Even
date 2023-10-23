@@ -1,54 +1,35 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, StyleSheet, Image } from "react-native";
 import StyleText from "./StyleText";
 import RepositoriStats from "./RepositoriStats";
+import theme from "../theme";
 
-const parseThounsands = (value) => {
-  return value >= 1000 ? `${Math.round(value / 100) / 10}k` : String(value);
-};
-
-const RepositoryStarts = (props) => {
-  return (
-    <RepositoriStats {...props} />
-    // <View style={{ flexDirection: "row", justifyContent: "space-around" }}>
-    //   <View>
-    //     <StyleText align="center" fontWeight="bold">
-    //       Start
-    //     </StyleText>
-    //     <StyleText align="center" fontWeight="bold">
-    //       {props.stargazerCpuent}
-    //     </StyleText>
-    //   </View>
-    //   <View>
-    //     <StyleText align="center" fontWeight="bold">
-    //       Forks
-    //     </StyleText>
-    //     <StyleText align="center" fontWeight="bold">
-    //       {props.reviewCouent}
-    //     </StyleText>
-    //   </View>
-    //   <View>
-    //     <StyleText align="center" fontWeight="bold">
-    //       Review:
-    //     </StyleText>
-    //     <StyleText align="center" fontWeight="bold">
-    //       {props.ratingAverage}
-    //     </StyleText>
-    //   </View>
-    // </View>
-  );
-};
+const ReposirtoryItemHeader = ({
+  ownerAavatar,
+  id,
+  fullname,
+  description,
+  languaje,
+}) => (
+  <View style={{ flexDirection: "row", paddingBottom: 2 }}>
+    <View style={{ flex: 0 }}>
+      <Image style={styles.image} source={{ uri: ownerAavatar }} />
+    </View>
+    <View style={{ flex: 1, flexDirection: "column", paddingLeft: 10 }}>
+      <StyleText>{id} </StyleText>
+      <StyleText fontSize="subheading" fontWeight="bold">
+        {fullname}
+      </StyleText>
+      <StyleText> {description}</StyleText>
+      <StyleText style={styles.languaje}> {languaje}</StyleText>
+    </View>
+  </View>
+);
 
 const RepositoryItem = (props) => (
   <View key={props.id} style={styles.container}>
-    <StyleText>id:{props.id} </StyleText>
-    <StyleText fontSize="subheading" fontWeight="bold">
-      Fullaname:{props.fullname}{" "}
-    </StyleText>
-    <StyleText>Description: {props.description}</StyleText>
-    <StyleText>Language: {props.languaje}</StyleText>
-
-    <RepositoryStarts {...props} />
+    <ReposirtoryItemHeader {...props} />
+    <RepositoriStats {...props} />
 
     {/* <Text> id:{props.id} </Text>
     <Text> Fullaname:{props.fullname} </Text>
@@ -70,6 +51,19 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "#09f",
     marginBottom: 5,
+  },
+  languaje: {
+    padding: 4,
+    color: theme.colors.white,
+    backgroundColor: theme.colors.primary,
+    alignSelf: "flex-start",
+    borderRadius: 4,
+    overflow: "hidden",
+  },
+  image: {
+    width: 48,
+    height: 48,
+    borderRadius: 4,
   },
 });
 

@@ -2,6 +2,10 @@ import React from "react";
 import { View } from "react-native";
 import StyleText from "./StyleText";
 
+const parseThounsands = (value) => {
+  return value >= 1000 ? `${Math.round(value / 100) / 10}k` : String(value);
+};
+
 const RepositoriStats = (props) => {
   return (
     <View style={{ flexDirection: "row", justifyContent: "space-around" }}>
@@ -10,7 +14,7 @@ const RepositoriStats = (props) => {
           Start
         </StyleText>
         <StyleText align="center" fontWeight="bold">
-          {props.stargazerCpuent}
+          {parseThounsands(props.stargazerCpuent)}
         </StyleText>
       </View>
       <View>
@@ -18,7 +22,7 @@ const RepositoriStats = (props) => {
           Forks
         </StyleText>
         <StyleText align="center" fontWeight="bold">
-          {props.reviewCouent}
+          {parseThounsands(props.reviewCouent)}
         </StyleText>
       </View>
       <View>
@@ -26,7 +30,7 @@ const RepositoriStats = (props) => {
           Review:
         </StyleText>
         <StyleText align="center" fontWeight="bold">
-          {props.ratingAverage}
+          {parseThounsands(props.ratingAverage)}
         </StyleText>
       </View>
     </View>

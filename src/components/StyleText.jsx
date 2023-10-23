@@ -42,6 +42,7 @@ export default function StyleText({
     color === "secondary" && styles.colorSecondary,
     fontSize === "subheading" && styles.subheading,
     fontWeight === "bold" && styles.bold,
+    style,
   ];
   return (
     <Text style={textStyles} {...restOfProps}>
