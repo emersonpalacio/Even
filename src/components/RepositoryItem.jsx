@@ -12,7 +12,7 @@ const ReposirtoryItemHeader = ({
   languaje,
 }) => (
   <View style={{ flexDirection: "row", paddingBottom: 2 }}>
-    <View style={{ flex: 0 }}>
+    <View style={{ paddingRight: 10 }}>
       <Image style={styles.image} source={{ uri: ownerAavatar }} />
     </View>
     <View style={{ flex: 1, flexDirection: "column", paddingLeft: 10 }}>
@@ -44,8 +44,7 @@ const RepositoryItem = (props) => (
 const styles = StyleSheet.create({
   container: {
     padding: 20,
-    paddingBottom: 5,
-    paddingTop: 5,
+    paddingVertical: 5,
   },
   strong: {
     fontWeight: "bold",
@@ -57,7 +56,8 @@ const styles = StyleSheet.create({
     color: theme.colors.white,
     backgroundColor: theme.colors.primary,
     alignSelf: "flex-start",
-    borderRadius: 4,
+    marginTop: 4,
+    marginVertical: 4,
     overflow: "hidden",
   },
   image: {
