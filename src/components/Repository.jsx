@@ -1,28 +1,54 @@
-import React from "react";
-import { FlatList, View, Text } from "react-native";
-import data from "../data/data.js";
-import RepositoryItem from "./RepositoryItem.jsx";
+import React, { useState } from "react";
+import { FlatList, View, Text, TextInput, Button } from "react-native";
+import axios from "axios";
+// import data from "../data/data.js";
+// import RepositoryItem from "./RepositoryItem.jsx";
 
 const Repository = () => {
-  return (
-    <FlatList
-      data={data}
-      ItemSeparatorComponent={() => <Text></Text>}
-      renderItem={({ item: dat }) => <RepositoryItem {...dat} />}
-    />
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-    // <div>
-    //   {data.map((dat) => (
-    //     <View key={dat.id}>
-    //       <Text>id:{dat.id}</Text>
-    //       <Text>Description: {dat.description}</Text>
-    //       <Text> Language: {dat.languaje}</Text>
-    //       <Text>Start: {dat.stargazerCpuent}</Text>
-    //       <Text>Forks:{dat.reviewCouent}</Text>
-    //       <Text>Review: {dat.ratingAverage}</Text>
-    //     </View>
-    //   ))}
-    // </div>
+  const handleLogin = async () => {
+    try {
+      const response = await axios.post(
+        "https://eventbackend-production.up.railway.app/api/user/login",
+        {
+          Email: email,
+          Password: password,
+        }
+      );
+      //console.log(response);
+      //console.log(response.data.message);
+
+      if (response.data.message == `Usuario logueado exitosamente`) {
+        alert(`estas dentro del home`);
+      } else {
+        alert("Inicio de sesión fallido. Verifica tus credenciales.");
+      }
+    } catch (error) {
+      console.error("Error en la solicitud:", error);
+    }
+  };
+
+  return (
+    <>
+      {/* <Text>hola data</Text> */}
+      <View>
+        <Text>Inicio de sesión</Text>
+        <TextInput
+          placeholder="Email"
+          value={email}
+          onChangeText={(text) => setEmail(text)}
+        />
+        <TextInput
+          placeholder="Contraseña"
+          secureTextEntry
+          value={password}
+          onChangeText={(text) => setPassword(text)}
+        />
+        <Button title="Iniciar sesión" onPress={handleLogin} />
+      </View>
+    </>
   );
 };
 

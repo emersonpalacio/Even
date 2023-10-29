@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet, Image } from "react-native";
+import { View, StyleSheet, Image, Platform } from "react-native";
 import StyleText from "./StyleText";
 import RepositoriStats from "./RepositoriStats";
 import theme from "../theme";
@@ -30,14 +30,6 @@ const RepositoryItem = (props) => (
   <View key={props.id} style={styles.container}>
     <ReposirtoryItemHeader {...props} />
     <RepositoriStats {...props} />
-
-    {/* <Text> id:{props.id} </Text>
-    <Text> Fullaname:{props.fullname} </Text>
-    <Text>Description: {props.description}</Text>
-    <Text> Language: {props.languaje}</Text>
-    <Text>Start: {props.stargazerCpuent}</Text>
-    <Text>Forks:{props.reviewCouent}</Text>
-    <Text>Review: {props.ratingAverage}</Text> */}
   </View>
 );
 
@@ -59,6 +51,7 @@ const styles = StyleSheet.create({
     marginTop: 4,
     marginVertical: 4,
     overflow: "hidden",
+    borderRadius: 4,
   },
   image: {
     width: 48,

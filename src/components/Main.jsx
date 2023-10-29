@@ -3,14 +3,17 @@ import Constants from "expo-constants";
 import { Text, View } from "react-native";
 import Repository from "./Repository";
 import AppBar from "./AppBar";
-import { Switch } from "react-router-native";
+import { Route, Routes, Redirect } from "react-router-native";
 
 const Main = () => {
   return (
     <View style={{ flex: 1 }}>
-      <AppBar />
-
-      <Repository />
+      {/* <AppBar /> */}
+      <Routes>
+        <Route path="/" element={<Repository />}></Route>
+        <Route path="/sigin" element={<Text>Sign In</Text>}></Route>
+      </Routes>
+      {/*  */}
     </View>
   );
 };
